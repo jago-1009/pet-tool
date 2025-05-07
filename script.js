@@ -9,9 +9,10 @@ const petSprite = document.getElementById("pet-sprite");
 let sleepInterval = null;
 function sleepAnim(direction, isAsleep) {
     if (direction == "right") {
-       
+        pet.style.transform = "scaleX(1)";  // Flip pet container to face right
         petSprite.style.transform = "scaleX(1)";  // Ensure pet sprite stays correct
-      } else  {
+      } else if (direction == "left") {
+        pet.style.transform = "scaleX(-1)"; // Flip pet container to face left
         petSprite.style.transform = "scaleX(-1)";  // Ensure pet sprite stays correct
       }
   
@@ -30,7 +31,7 @@ function sleepAnim(direction, isAsleep) {
         }
       }, 1000);
     } else {
-      petSprite.src = `pet-right-awake.png`;
+      petSprite.src = `pet-${direction}-awake.png`;
     }
   }
   
