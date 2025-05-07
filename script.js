@@ -41,7 +41,7 @@ function changeSleepSprite(condition) {
     }
     else if (condition == "awake") {
         sleepAnim(direction, false); // Stop sleep animation
-        petSprite.src = 'pet-right-awake.png'; // Change to awake sprite
+        petSprite.src = `pet-${direction}-awake.png`; // Change to awake sprite
     movePetRandomly(); // Resume random movement
     }
     petSprite.style.left = `${lastLeft}px`; // Keep the last left position
@@ -51,7 +51,7 @@ if (!asleep) {
   const areaWidth = gameArea.clientWidth;
   const petWidth = pet.clientWidth;
 
-  const randomLeft = Math.random() * (areaWidth - petWidth);
+  const randomLeft = Math.random() * ((areaWidth - petWidth));
 
   // Determine direction
   if (randomLeft > lastLeft) {
@@ -98,5 +98,27 @@ document.getElementById("wake").addEventListener("click", function() {
 asleep = false;
 changeSleepSprite("awake");
 
+})
+
+document.getElementById("pet").addEventListener("click", function() {
+    if (!asleep) {
+    function smile(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      petSprite.style.transitionPlayState = "paused"
+      if (direction == "right") {
+        petSprite.style.transform = "scaleX(1)"; // Flip pet container to face right
+      petSprite.src = `happy-right.png`;
+      }
+     if (direction == "left") {
+            petSprite.style.transform = "scaleX(-1)"; // Flip pet container to face left
+            petSprite.src = `happy-left.png`;
+        }
+      smile(2000).then(() => {
+        
+        petSprite.src = `pet-${direction}-awake.png`; 
+        petSprite.style.transitionPlayState = "running";
+        });
+    }
 })
 movePetRandomly();
