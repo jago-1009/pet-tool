@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #eef;
+  }
+  
+  #game-area {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  #pet {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    font-size: 48px;
+    transition: left 5s ease; /* Add transition for smooth movement */
+
+  }
