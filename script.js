@@ -95,9 +95,10 @@ pet.addEventListener('transitionend', function onTransitionEnd() {
 
 }) 
 document.getElementById("wake").addEventListener("click", function() {
+if (asleep) {
 asleep = false;
 changeSleepSprite("awake");
-
+}
 })
 
 document.getElementById("pet").addEventListener("click", function() {
